@@ -4,7 +4,8 @@ export const Header = () =>  {
   console.log("test git")
     return <>
     <div className='header'>
-    <p className='title'>Sourcing Edge</p>
+    <h2 className='heading-title'>Sourcing Edge</h2>
+    <p className='subtitle'>CONCEPT, CREATE, DELIVER</p>
     </div>
     </>
   }

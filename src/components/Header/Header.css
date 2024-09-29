@@ -1,10 +1,13 @@
 .header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    .title {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-top: 0;
+    align-items: center;
+    .heading-title {
+        margin: 0;
         }
+    .subtitle {
+        margin: 0;
+    }
 }
 
