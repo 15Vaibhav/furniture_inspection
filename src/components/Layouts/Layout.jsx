@@ -5,6 +5,7 @@ import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 
 export const Layouts = () =>  {
+  
   // const [canvasCaptured, setCanvasCaptured] = useState();
   const canvasRefs = useRef([]);
 
