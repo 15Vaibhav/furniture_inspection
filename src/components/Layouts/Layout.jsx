@@ -6,7 +6,7 @@ import { jsPDF } from 'jspdf';
 
 export const Layouts = () =>  {
   
-  // const [canvasCaptured, setCanvasCaptured] = useState();
+  const [canvasCaptured, setCanvasCaptured] = useState();
   const canvasRefs = useRef([]);
 
   const captureCanvas = async (route, index) => {
@@ -20,11 +20,11 @@ export const Layouts = () =>  {
     try {
       const canvas = await html2canvas(pageElement, { scale: 2 });
       canvasRefs.current[index] = canvas;
-      // setCanvasCaptured((prevState) => {
-      //   const newCaptured = [...prevState];
-      //   newCaptured[index] = true;
-      //   return newCaptured;
-      // });
+      setCanvasCaptured((prevState) => {
+        const newCaptured = [...prevState];
+        newCaptured[index] = true;
+        return newCaptured;
+      });
       console.log(`Captured canvas for ${route}`);
     } catch (err) {
       console.error(`Failed to capture canvas for ${route}:`, err);

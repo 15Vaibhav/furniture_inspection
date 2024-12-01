@@ -59,7 +59,7 @@ export const HomePage = () => {
             </div>
             <div class="upload-btn-wrapper">
               <button class="btn">Choose an image</button>
-              <input type="file" name="myfile" onChange={handleImageChange} />
+              <input type="file" capture="user" accept="image/" name="myfile" onChange={handleImageChange} />
             </div>
           </td>
         </tr>
