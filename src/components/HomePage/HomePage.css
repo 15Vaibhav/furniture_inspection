@@ -132,3 +132,15 @@ caption {
   font-size: 14px;
   text-align: center;
 }
+
+.d-flex{
+  display: flex;
+}
+
+.next-btn{
+  margin-left: auto;
+  background-color: orange;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}

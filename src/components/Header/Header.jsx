@@ -10,16 +10,19 @@ export const Header = () => {
       </div>
       <div className="header-wrapper">
         <table className="header-table">
+          <thead>
           <tr>
-            <th colspan="2">Pre-Shipment Inspection Report</th>
+            <th colSpan="2">Pre-Shipment Inspection Report</th>
             <th>Result</th>
           </tr>
+          </thead>
+          <tbody>
           <tr>
             <td style={{ width: "40%" }} className="bold-column">
               Report Number:
             </td>
             <td style={{ width: "40%" }}>{getReportNumber()}</td>
-            <td rowspan="3">
+            <td rowSpan="3">
               <select name="result" id="result" className="select-dropdown">
                 <option value="">Select your option</option>
                 <option value="passed">Passed</option>
@@ -51,6 +54,7 @@ export const Header = () => {
               </select>
             </td>
           </tr>
+          </tbody>
         </table>
       </div>
     </>
