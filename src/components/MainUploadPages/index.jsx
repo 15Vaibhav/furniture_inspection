@@ -1,32 +1,31 @@
 import React from "react";
 
-import "../ProductInspection/index.css";
-import { uploadProductInspection } from "../../utils/constant";
+import "../MainUploadPages/index.css";
 import UploadPhoto from "../UploadPhoto";
 import NextButton from "../NextButton";
 import BackButton from "../BackButton";
 
-const ProductInspection = () => {
+const MainUploadPages = ({uploadData, heading, back, next}) => {
   return (
     <>
       <div className="container">
         <div className="cust-header">
-          <h3>PRODUCT OFFERED FOR INSPECTION</h3>
+          <h3>{heading}</h3>
         </div>
         <div className="grid">
-          {uploadProductInspection?.map((imageData, index) => (
+          {uploadData?.map((imageData, index) => (
             <React.Fragment key={index}>
               <UploadPhoto imageData={imageData} index={index} />
             </React.Fragment>
           ))}
         </div>
         <div className="d-flex">
-          <BackButton page={0} />
-          <NextButton page={2} />
+          <BackButton page={back} />
+          <NextButton page={next} />
         </div>
       </div>
     </>
   );
 };
 
-export default ProductInspection;
+export default MainUploadPages;

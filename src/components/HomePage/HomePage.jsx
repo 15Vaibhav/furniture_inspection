@@ -1,14 +1,12 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import { useState } from "react";
-import "../HomePage/HomePage.css";
-import { useNavigate } from "react-router-dom";
 
+import "../HomePage/HomePage.css";
+import NextButton from "../NextButton";
 
 export const HomePage = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
-
-  const navigate = useNavigate();
 
   // Function to handle image selection and preview
   const handleImageChange = (event) => {
@@ -20,10 +18,6 @@ export const HomePage = () => {
       setImagePreview(previewUrl);
       setFile(selectedFile);
     }
-  };
-
-  const navigateToNext = () => {
-    navigate("/home/product-inspection");
   };
 
   return (
@@ -541,10 +535,9 @@ export const HomePage = () => {
         Source: ANSI/ASQ Z 1.4 The Sampling Procedures and Table for Inspection
         by Attributes
       </div>
-      <div className="d-flex">
-        <button onClick={navigateToNext} className="next-btn">
-          Next Page
-        </button>
+      <div className="d-flex" style={{ padding: "10px" }}>
+        <div></div>
+        <NextButton page={1} />
       </div>
     </>
   );

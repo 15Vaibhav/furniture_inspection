@@ -133,14 +133,8 @@ caption {
   text-align: center;
 }
 
-.d-flex{
+.d-flex {
   display: flex;
-}
-
-.next-btn{
-  margin-left: auto;
-  background-color: orange;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
 }
