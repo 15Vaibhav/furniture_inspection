@@ -7,7 +7,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-import { Layouts } from "./components/Layouts/Layout";
 import Login from "./components/Login/Login";
 import ProtectedRoute from "./components/Login/ProtectedRoute";
 import { HomePage } from "./components/HomePage/HomePage";
@@ -25,11 +24,13 @@ import { Header } from "./components/Header/Header";
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { getReportNumber } from "./utils/utils";
 
 function App() {
-  const [canvasCaptured, setCanvasCaptured] = useState([false, false]);
-  const canvasRefs = useRef([]);
+  const [canvasCaptured, setCanvasCaptured] = useState([]);
+  const [loading, setLoading] = useState(false); // Loader state
 
+  const canvasRefs = useRef([]);
   const captureCanvas = async (route, index) => {
     const pageElement = document.getElementById(route);
 
@@ -52,14 +53,17 @@ function App() {
     }
   };
 
-  const generatePdf = () => {
-    if (canvasRefs.current.length === 2) {
-      const pdf = new jsPDF("p", "mm", "a4");
+  const generatePdf = async () => {
+    if (canvasRefs.current.length === 6) {
+      setLoading(true); // Show loader
 
+      const pdf = new jsPDF("p", "mm", "a4");
+      await new Promise((resolve) => setTimeout(resolve, 500));
       canvasRefs.current.forEach((canvas, index) => {
+        console.log(index)
         const imgData = canvas.toDataURL("image/png");
         const imgWidth = 210; // A4 width in mm
-        const imgHeight = (canvas.height * imgWidth) / (canvas.width);
+        const imgHeight = (canvas.height * imgWidth) / (canvas.width*1.5);
 
         if (index > 0) {
           pdf.addPage();
@@ -68,6 +72,8 @@ function App() {
       });
 
       pdf.save("pages.pdf");
+        setLoading(false); // Hide loader
+    
     } else {
       console.log("Canvases are not fully captured yet.", canvasCaptured);
     }
@@ -75,19 +81,25 @@ function App() {
 
   return (
     <>
+      {/* Show Loader */}
+      {loading && (
+        <div style={loaderStyle}>
+          <div className="spinner"></div>
+          <p>Generating PDF...</p>
+        </div>
+      )}
       <Router>
-      {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Login />} />
           <Route
             path="/home"
             element={
               <ProtectedRoute>
-                <HomePage  pageId={"home"} captureCanvas={captureCanvas} />
+                <HomePage pageId={"home"} captureCanvas={captureCanvas} />
               </ProtectedRoute>
             }
           />
-        <Route
+          <Route
             path={`/product-inspection`}
             element={
               <ProtectedRoute>
@@ -98,7 +110,103 @@ function App() {
                   uploadData={uploadProductSpecification}
                   heading={"PRODUCT SPECIFICATION"}
                   back={0}
+                  currentPage={1}
                   next={2}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            pageId={"inspection-summary"}
+            path={`/inspection-summary`}
+            element={
+              <ProtectedRoute>
+                <InspectionSummary
+                  captureCanvas={captureCanvas}
+                  heading={"II. INSPECTION SUMMARY"}
+                  back={1}
+                  next={3}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={`/product-specification`}
+            element={
+              <ProtectedRoute>
+                <MainUploadPages
+                  pageId="product-specification"
+                  captureCanvas={captureCanvas}
+                  uploadData={uploadProductSpecification}
+                  heading={"A. PRODUCT SPECIFICATION"}
+                  back={2}
+                  currentPage={2}
+                  next={4}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={`/workmanship-defects-1`}
+            element={
+              <ProtectedRoute>
+                <MainUploadPages
+                  pageId="workmanship-defects-1"
+                  captureCanvas={captureCanvas}
+                  uploadData={uploadWorkmanship1}
+                  heading={"B. WORKMANSHIP / DEFECTS"}
+                  back={3}
+                  currentPage={3}
+                  next={5}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={`/workmanship-defects-2`}
+            element={
+              <ProtectedRoute>
+                <MainUploadPages
+                  pageId="workmanship-defects-2"
+                  captureCanvas={captureCanvas}
+                  uploadData={uploadWorkmanship2}
+                  heading={"B. WORKMANSHIP / DEFECTS"}
+                  back={4}
+                  currentPage={4}
+                  next={6}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={`/on-site-test`}
+            element={
+              <ProtectedRoute>
+                <MainUploadPages
+                  pageId="on-site-test"
+                  generatePdf={generatePdf}
+                  captureCanvas={captureCanvas}
+                  uploadData={uploadOnSiteTest}
+                  heading={"C. ON SITE TEST"}
+                  back={5}
+                  currentPage={5}
+                  next={7}
+                />
+              </ProtectedRoute>
+            }
+          />
+          {/* <Route
+            path={`/packaging-labelling-1`}
+            element={
+              <ProtectedRoute>
+                <MainUploadPages
+                  pageId={"packaging-labelling-1"}
+                  generatePdf={generatePdf}
+                  captureCanvas={captureCanvas}
+                  uploadData={uploadPackagingLabeling2}
+                  heading={"D. PACKAGING & LABELLING"}
+                  back={8}
+                  next={9}
                 />
               </ProtectedRoute>
             }
@@ -211,4 +319,18 @@ function App() {
   );
 }
 
+const loaderStyle = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  zIndex: 9999,
+  color: "#fff",
+  fontSize: "18px",
+};
 export default App;

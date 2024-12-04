@@ -10,11 +10,11 @@ export const HomePage = ({ pageId, captureCanvas }) => {
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
 
-  const [captured, setCaptured] = useState(false);
-  const navigate = useNavigate();
+  // const [captured, setCaptured] = useState(false);
+  // const navigate = useNavigate();
 
   const captureAndGeneratePdf = async () => {
-           await captureCanvas(pageId, 0); // Capture canvas for contact page
+      await captureCanvas(pageId, 0); // Capture canvas for contact page
   }
 
   // Function to handle image selection and preview

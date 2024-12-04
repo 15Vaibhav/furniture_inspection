@@ -21,7 +21,7 @@ export const Header = () => {
             <td style={{ width: "40%" }} className="bold-column">
               Report Number:
             </td>
-            <td style={{ width: "40%" }}>{getReportNumber()}</td>
+            <td style={{ width: "40%" }}>{sessionStorage.getItem('reportId')}</td>
             <td rowSpan="3">
               <select name="result" id="result" className="select-dropdown">
                 <option value="">Select your option</option>

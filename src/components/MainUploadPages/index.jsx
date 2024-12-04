@@ -7,18 +7,17 @@ import BackButton from "../BackButton";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../Header/Header";
 
-const MainUploadPages = ({pageId, generatePdf, captureCanvas ,uploadData, heading, back, next}) => {
+const MainUploadPages = ({pageId, generatePdf, captureCanvas ,uploadData, heading, back,currentPage, next}) => {
   const [hasCaptured, setHasCaptured] = useState(false); // State to track if capture has occurred
   const navigate = useNavigate();
 
-    const captureAndGeneratePdf = async () => {
-      console.log('capCansva', pageId)
+    const captureAndGeneratePdf = async (isGen) => {
       // if (!hasCaptured) { // Check if we have already captured
-        await captureCanvas(pageId, 1); // Capture canvas for contact page
+        await captureCanvas(pageId, currentPage); // Capture canvas for contact page
         // setHasCaptured(true); // Set the flag to true after capturing
       // }
+      if(isGen)
       generatePdf()
-  
     }
 
   
@@ -39,9 +38,11 @@ const MainUploadPages = ({pageId, generatePdf, captureCanvas ,uploadData, headin
         </div>
         <div className="d-flex">
           <BackButton page={back} />
+          <div onClick={() => captureAndGeneratePdf(false)}>
           <NextButton page={next} />
         </div>
-        <button onClick={captureAndGeneratePdf}>Download PDF</button>
+        </div>
+        {pageId ==='on-site-test' && <button onClick={() => captureAndGeneratePdf(true)}>Download PDF</button>}
         </div>
     </>
   );
