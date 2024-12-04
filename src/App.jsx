@@ -59,7 +59,7 @@ function App() {
       canvasRefs.current.forEach((canvas, index) => {
         const imgData = canvas.toDataURL("image/png");
         const imgWidth = 210; // A4 width in mm
-        const imgHeight = (canvas.height * imgWidth) / (canvas.width*.90);
+        const imgHeight = (canvas.height * imgWidth) / (canvas.width);
 
         if (index > 0) {
           pdf.addPage();
@@ -76,7 +76,7 @@ function App() {
   return (
     <>
       <Router>
-      <Header />
+      {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Login />} />
           <Route

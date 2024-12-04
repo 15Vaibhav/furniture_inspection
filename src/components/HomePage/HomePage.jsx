@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import "../HomePage/HomePage.css";
 import NextButton from "../NextButton";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../Header/Header";
 
 export const HomePage = ({ pageId, captureCanvas }) => {
   const [imagePreview, setImagePreview] = useState(null);
@@ -30,6 +31,7 @@ export const HomePage = ({ pageId, captureCanvas }) => {
 
   return (
     <div id={pageId}>
+      <Header></Header>
       <table className="home-page-table">
         <thead>
           <tr>

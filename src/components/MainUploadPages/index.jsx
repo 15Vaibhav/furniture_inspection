@@ -5,6 +5,7 @@ import UploadPhoto from "../UploadPhoto";
 import NextButton from "../NextButton";
 import BackButton from "../BackButton";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../Header/Header";
 
 const MainUploadPages = ({pageId, generatePdf, captureCanvas ,uploadData, heading, back, next}) => {
   const [hasCaptured, setHasCaptured] = useState(false); // State to track if capture has occurred
@@ -25,6 +26,7 @@ const MainUploadPages = ({pageId, generatePdf, captureCanvas ,uploadData, headin
   return (
     <>
       <div className="container" id={pageId}>
+        <Header></Header>
         <div className="cust-header">
           <h3>{heading}</h3>
         </div>
