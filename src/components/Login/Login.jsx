@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { users } from "../../utils/users";
 import { isValidUser } from "../../utils/utils";
 const Login = () => {
   const [email, setEmail] = useState("");

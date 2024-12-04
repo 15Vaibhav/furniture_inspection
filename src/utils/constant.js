@@ -27,18 +27,18 @@ export const uploadProductInspection = [
 
 export const nextMapping = {
   0: "/home",
-  1: "/home/product-inspection",
-  2: "/home/inspection-summary",
-  3: "/home/product-specification",
-  4: "/home/workmanship-defects-1",
-  5: "/home/workmanship-defects-2",
-  6: "/home/on-site-test",
-  7: "/home/packaging-labelling-1",
-  8: "/home/packaging-labelling-2",
-  9: "/home/drop-test-1",
-  10: "/home/drop-test-2",
-  11: "/home/other-documents",
-  12: "/home/remarks",
+  1: "/product-inspection",
+  2: "/inspection-summary",
+  3: "/product-specification",
+  4: "/workmanship-defects-1",
+  5: "/workmanship-defects-2",
+  6: "/on-site-test",
+  7: "/packaging-labelling-1",
+  8: "/packaging-labelling-2",
+  9: "/drop-test-1",
+  10: "/drop-test-2",
+  11: "/other-documents",
+  12: "/remarks",
 };
 
 export const uploadProductSpecification = [

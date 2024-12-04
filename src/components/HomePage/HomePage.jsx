@@ -1,12 +1,20 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "../HomePage/HomePage.css";
 import NextButton from "../NextButton";
+import { useNavigate } from "react-router-dom";
 
-export const HomePage = () => {
+export const HomePage = ({ pageId, captureCanvas }) => {
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
+
+  const [captured, setCaptured] = useState(false);
+  const navigate = useNavigate();
+
+  const captureAndGeneratePdf = async () => {
+           await captureCanvas(pageId, 0); // Capture canvas for contact page
+  }
 
   // Function to handle image selection and preview
   const handleImageChange = (event) => {
@@ -21,7 +29,7 @@ export const HomePage = () => {
   };
 
   return (
-    <>
+    <div id={pageId}>
       <table className="home-page-table">
         <thead>
           <tr>
@@ -344,27 +352,107 @@ export const HomePage = () => {
           <tr>
             <td>Critical:</td>
             <td>Not Allowed</td>
-            <td>Input Data</td>
-            <td>Input Data</td>
-            <td>Input Data</td>
-            <td>Input Data</td>
-            <td rowSpan="3">Input Data</td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
+            <td rowSpan="3">  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
           </tr>
           <tr>
             <td>Major:</td>
             <td>2.5</td>
-            <td>Input Data</td>
-            <td>Input Data</td>
-            <td>Input Data</td>
-            <td>Input Data</td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
           </tr>
           <tr>
             <td>Minor:</td>
             <td>4.0</td>
-            <td>Input Data</td>
-            <td>Input Data</td>
-            <td>1Input Data</td>
-            <td>Input Data</td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
+            <td>
+            <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+            <td>  <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              /></td>
           </tr>
         </tbody>
       </table>
@@ -536,9 +624,10 @@ export const HomePage = () => {
         by Attributes
       </div>
       <div className="d-flex" style={{ padding: "10px" }}>
-        <div></div>
+        <div onClick={captureAndGeneratePdf}>
         <NextButton page={1} />
       </div>
-    </>
+      </div>
+    </div>
   );
 };
