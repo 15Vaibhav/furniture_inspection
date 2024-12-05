@@ -10,11 +10,11 @@ const Login = () => {
   // Simulated authentication (you can replace this with an API call)
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(isValidUser(email, password))
+    console.log(isValidUser(email, password));
     if (isValidUser(email, password)) {
-        sessionStorage.setItem('isAuthenticated', true)
+      sessionStorage.setItem("isAuthenticated", true);
       navigate("/home"); // Redirect to Dashboard
-      sessionStorage.setItem('reportId', getReportNumber())
+      sessionStorage.setItem("reportId", getReportNumber());
     } else {
       setError("Invalid email or password!");
     }
@@ -41,7 +41,9 @@ const Login = () => {
           required
           style={styles.input}
         />
-        <button type="submit" style={styles.button}>Login</button>
+        <button type="submit" style={styles.button}>
+          Login
+        </button>
       </form>
     </div>
   );

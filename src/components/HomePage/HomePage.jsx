@@ -14,8 +14,8 @@ export const HomePage = ({ pageId, captureCanvas }) => {
   // const navigate = useNavigate();
 
   const captureAndGeneratePdf = async () => {
-      await captureCanvas(pageId, 0); // Capture canvas for contact page
-  }
+    await captureCanvas(pageId, 0); // Capture canvas for contact page
+  };
 
   // Function to handle image selection and preview
   const handleImageChange = (event) => {
@@ -354,93 +354,9 @@ export const HomePage = ({ pageId, captureCanvas }) => {
           <tr>
             <td>Critical:</td>
             <td>Not Allowed</td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-            <td rowSpan="3">  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-          </tr>
-          <tr>
-            <td>Major:</td>
-            <td>2.5</td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-          </tr>
-          <tr>
-            <td>Minor:</td>
-            <td>4.0</td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
-            <td>  <input
-                type="text"
-                id="lname"
-                name="lname"
-                className="inpput-filed"
-                placeholder="Please enter the details."
-              /></td>
             <td>
-            <input
+              {" "}
+              <input
                 type="text"
                 id="lname"
                 name="lname"
@@ -448,13 +364,133 @@ export const HomePage = ({ pageId, captureCanvas }) => {
                 placeholder="Please enter the details."
               />
             </td>
-            <td>  <input
+            <td>
+              {" "}
+              <input
                 type="text"
                 id="lname"
                 name="lname"
                 className="inpput-filed"
                 placeholder="Please enter the details."
-              /></td>
+              />
+            </td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+            <td rowSpan="3">
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Major:</td>
+            <td>2.5</td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Minor:</td>
+            <td>4.0</td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                className="inpput-filed"
+                placeholder="Please enter the details."
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -626,9 +662,10 @@ export const HomePage = ({ pageId, captureCanvas }) => {
         by Attributes
       </div>
       <div className="d-flex" style={{ padding: "10px" }}>
+        <div></div>
         <div onClick={captureAndGeneratePdf}>
-        <NextButton page={1} />
-      </div>
+          <NextButton page={1} />
+        </div>
       </div>
     </div>
   );

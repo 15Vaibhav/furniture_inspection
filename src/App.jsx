@@ -12,9 +12,13 @@ import ProtectedRoute from "./components/Login/ProtectedRoute";
 import { HomePage } from "./components/HomePage/HomePage";
 import MainUploadPages from "./components/MainUploadPages";
 import {
+  uploadDropTest1,
+  uploadDropTest2,
   uploadOnSiteTest,
+  uploadOtherDocuments,
   uploadPackagingLabeling1,
   uploadPackagingLabeling2,
+  uploadProductInspection,
   uploadProductSpecification,
   uploadWorkmanship1,
   uploadWorkmanship2,
@@ -60,10 +64,10 @@ function App() {
       const pdf = new jsPDF("p", "mm", "a4");
       await new Promise((resolve) => setTimeout(resolve, 500));
       canvasRefs.current.forEach((canvas, index) => {
-        console.log(index)
+        console.log(index);
         const imgData = canvas.toDataURL("image/png");
         const imgWidth = 210; // A4 width in mm
-        const imgHeight = (canvas.height * imgWidth) / (canvas.width*1.5);
+        const imgHeight = (canvas.height * imgWidth) / (canvas.width * 1.5);
 
         if (index > 0) {
           pdf.addPage();
@@ -72,8 +76,7 @@ function App() {
       });
 
       pdf.save("pages.pdf");
-        setLoading(false); // Hide loader
-    
+      setLoading(false); // Hide loader
     } else {
       console.log("Canvases are not fully captured yet.", canvasCaptured);
     }
@@ -107,8 +110,8 @@ function App() {
                   pageId={"product-inspection"}
                   generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
-                  uploadData={uploadProductSpecification}
-                  heading={"PRODUCT SPECIFICATION"}
+                  uploadData={uploadProductInspection}
+                  heading={"PRODUCT OFFERED FOR INSPECTION"}
                   back={0}
                   currentPage={1}
                   next={2}
@@ -122,9 +125,12 @@ function App() {
             element={
               <ProtectedRoute>
                 <InspectionSummary
+                  pageId="product-specification"
+                  generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
                   heading={"II. INSPECTION SUMMARY"}
                   back={1}
+                  currentPage={2}
                   next={3}
                 />
               </ProtectedRoute>
@@ -136,11 +142,12 @@ function App() {
               <ProtectedRoute>
                 <MainUploadPages
                   pageId="product-specification"
+                  generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
                   uploadData={uploadProductSpecification}
                   heading={"A. PRODUCT SPECIFICATION"}
                   back={2}
-                  currentPage={2}
+                  currentPage={3}
                   next={4}
                 />
               </ProtectedRoute>
@@ -152,12 +159,14 @@ function App() {
               <ProtectedRoute>
                 <MainUploadPages
                   pageId="workmanship-defects-1"
+                  generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
                   uploadData={uploadWorkmanship1}
                   heading={"B. WORKMANSHIP / DEFECTS"}
                   back={3}
-                  currentPage={3}
+                  currentPage={4}
                   next={5}
+                  showListMenu={true}
                 />
               </ProtectedRoute>
             }
@@ -168,12 +177,14 @@ function App() {
               <ProtectedRoute>
                 <MainUploadPages
                   pageId="workmanship-defects-2"
+                  generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
                   uploadData={uploadWorkmanship2}
                   heading={"B. WORKMANSHIP / DEFECTS"}
                   back={4}
-                  currentPage={4}
+                  currentPage={5}
                   next={6}
+                  showListMenu={true}
                 />
               </ProtectedRoute>
             }
@@ -189,13 +200,13 @@ function App() {
                   uploadData={uploadOnSiteTest}
                   heading={"C. ON SITE TEST"}
                   back={5}
-                  currentPage={5}
+                  currentPage={6}
                   next={7}
                 />
               </ProtectedRoute>
             }
           />
-          {/* <Route
+          <Route
             path={`/packaging-labelling-1`}
             element={
               <ProtectedRoute>
@@ -203,115 +214,101 @@ function App() {
                   pageId={"packaging-labelling-1"}
                   generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
+                  uploadData={uploadPackagingLabeling1}
+                  heading={"D. PACKAGING & LABELLING"}
+                  back={6}
+                  currentPage={7}
+                  next={8}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={`/packaging-labelling-2`}
+            element={
+              <ProtectedRoute>
+                <MainUploadPages
+                  pageId={"packaging-labelling-2"}
+                  generatePdf={generatePdf}
+                  captureCanvas={captureCanvas}
                   uploadData={uploadPackagingLabeling2}
                   heading={"D. PACKAGING & LABELLING"}
-                  back={8}
+                  back={7}
+                  currentPage={8}
                   next={9}
                 />
               </ProtectedRoute>
             }
           />
-          {/* <Route
-            path={`/product-inspection`}
+          <Route
+            path={`/drop-test-1`}
             element={
               <ProtectedRoute>
                 <MainUploadPages
-                 pageId={"packaging-labelling-1"}
+                  pageId={"drop-test-1"}
                   generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
-                  uploadData={uploadProductSpecification}
-                  heading={"PRODUCT SPECIFICATION"}
-                  back={0}
-                  next={2}
+                  uploadData={uploadDropTest1}
+                  heading={"E. DROP TEST"}
+                  back={8}
+                  currentPage={9}
+                  next={10}
                 />
               </ProtectedRoute>
             }
           />
           <Route
-            path={`/inspection-summary`}
-            element={
-              <ProtectedRoute>
-                <InspectionSummary
-                  captureCanvas={captureCanvas}
-                  heading={"II. INSPECTION SUMMARY"}
-                  back={1}
-                  next={3}
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={`/product-specification`}
+            path={`/drop-test-2`}
             element={
               <ProtectedRoute>
                 <MainUploadPages
+                  pageId={"drop-test-2"}
+                  generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
-                  uploadData={uploadProductSpecification}
-                  heading={"A. PRODUCT SPECIFICATION"}
-                  back={2}
-                  next={4}
+                  uploadData={uploadDropTest2}
+                  heading={"E. DROP TEST"}
+                  back={9}
+                  currentPage={10}
+                  next={11}
                 />
               </ProtectedRoute>
             }
           />
           <Route
-            path={`/workmanship-defects-1`}
+            path={`/other-documents`}
             element={
               <ProtectedRoute>
                 <MainUploadPages
+                  pageId={"other-documents"}
+                  generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
-                  uploadData={uploadWorkmanship1}
-                  heading={"B. WORKMANSHIP / DEFECTS"}
-                  back={3}
-                  next={5}
+                  uploadData={uploadOtherDocuments}
+                  heading={
+                    "F. OTHER DOCUMENTS - PACKING LIST; PRODUCT TEST REPORT"
+                  }
+                  back={10}
+                  currentPage={11}
+                  next={12}
                 />
               </ProtectedRoute>
             }
           />
           <Route
-            path={`/workmanship-defects-2`}
+            path={`/remarks`}
             element={
               <ProtectedRoute>
                 <MainUploadPages
+                  pageId={"remarks"}
+                  generatePdf={generatePdf}
                   captureCanvas={captureCanvas}
                   uploadData={uploadWorkmanship2}
-                  heading={"B. WORKMANSHIP / DEFECTS"}
-                  back={4}
-                  next={6}
+                  heading={"REMARKS:"}
+                  back={11}
+                  currentPage={12}
                 />
               </ProtectedRoute>
             }
           />
-          <Route
-            path={`/on-site-test`}
-            element={
-              <ProtectedRoute>
-                <MainUploadPages
-                  captureCanvas={captureCanvas}
-                  uploadData={uploadOnSiteTest}
-                  heading={"C. ON SITE TEST"}
-                  back={5}
-                  next={7}
-                />
-              </ProtectedRoute>
-            }
-          /> */}
-          {/* <Route
-            path={`/packaging-labelling-1`}
-            element={
-              <ProtectedRoute>
-                <MainUploadPages
-                  pageId={"packaging-labelling-1"}
-                  generatePdf={generatePdf}
-                  captureCanvas={captureCanvas}
-                  uploadData={uploadPackagingLabeling2}
-                  heading={"D. PACKAGING & LABELLING"}
-                  back={8}
-                  next={9}
-                />
-              </ProtectedRoute>
-            }
-          /> */}
           {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </Router>

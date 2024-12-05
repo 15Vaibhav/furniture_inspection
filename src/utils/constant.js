@@ -86,7 +86,7 @@ export const uploadWorkmanship1 = [
   },
   {
     imageName: "6 - Levelling / Stability",
-  }
+  },
 ];
 
 export const uploadWorkmanship2 = [
@@ -188,5 +188,86 @@ export const uploadPackagingLabeling2 = [
   },
   {
     imageName: "16 - Additional Picture",
+  },
+];
+
+export const uploadDropTest1 = [
+  {
+    imageName: "1 - Drop Test (Pic 1)",
+  },
+  {
+    imageName: "2 - Drop Test (Pic 2)",
+  },
+  {
+    imageName: "3 - Drop Test (Pic 3)",
+  },
+  {
+    imageName: "4 - Drop Test (Pic 4)",
+  },
+  {
+    imageName: "5 - Drop Test (Pic 5)",
+  },
+  {
+    imageName: "6 - Drop Test (Pic 6)",
+  },
+  {
+    imageName: "7 - Drop Test (Pic 7)",
+  },
+  {
+    imageName: "8 - Drop Test (Pic 8)",
+  },
+];
+
+export const uploadDropTest2 = [
+  {
+    imageName: "9 - Drop Test (Pic 9)",
+  },
+  {
+    imageName: "10 - Drop Test (Pic 10)",
+  },
+  {
+    imageName: "11 - Drop Test (Pic 11)",
+  },
+  {
+    imageName: "12 - Drop Test Result (Pic 1)",
+  },
+  {
+    imageName: "13 - Drop Test Result (Pic 2)",
+  },
+  {
+    imageName: "14 - Drop Test Result (Pic 3)",
+  },
+  {
+    imageName: "15 - Drop Test Result (Pic 4)",
+  },
+  {
+    imageName: "16 - Drop Test Result (Pic 5)",
+  },
+];
+
+export const uploadOtherDocuments = [
+  {
+    imageName: "1 - Packing List",
+  },
+  {
+    imageName: "2 - Product Test Report (Page 1)",
+  },
+  {
+    imageName: "3 - Test Report (Page 2)",
+  },
+  {
+    imageName: "4 - Test Report (Page 3)",
+  },
+  {
+    imageName: "5 - Test Report (Page 4)",
+  },
+  {
+    imageName: "6 - Test Report (Page 5)",
+  },
+  {
+    imageName: "7 - Test Report (Pic 6)",
+  },
+  {
+    imageName: "8 - Test Report (Page 7)",
   },
 ];
