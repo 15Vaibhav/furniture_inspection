@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "../UploadPhoto/index.css";
 
 const UploadPhoto = ({ imageData, index }) => {
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
+
+  useEffect(() => {
+    setFile(null);
+    setImagePreview(null);
+  }, [imageData, index]);
 
   // Function to handle image selection and preview
   const handleImageChange = (event) => {
